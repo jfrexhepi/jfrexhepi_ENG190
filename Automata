@@ -1,1 +1,21 @@
+from PIL import  Image,ImageDraw
+
+img = Image.new('RGB',(301,151),'lightblue')
+draw = ImageDraw.Draw(img)
+
+aboveLine = [0] * 301
+aboveLine[int(len(aboveLine)/2)] = 1
+
+print(aboveLine)
+
+left, right = 151, 151
+for y in range(151):
+    for x in range(301):
+        if left <= x and x <= right:
+            if x % 2 == 1 and y % 2 == 1:
+                draw.point((x,y), fill="black")
+    left+= -1
+    right+= 1
+
+img.show()
 
